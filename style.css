@@ -1,0 +1,159 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+button {
+  transition: all 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --body-background: hsl(0, 0%, 7%);
+  --header-background: hsl(0, 0%, 5%);
+  --link-hover: hsl(0, 0%, 41%);
+  --tomato-red: hsl(0, 99%, 38%);
+  --red-border: 3px solid var(--tomato-red);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  font-size: clamp(12px, 1.5vw + 3px, 18px);
+}
+
+body {
+  background-color: var(--body-background);
+  color: whitesmoke;
+  font-family: "Yantramanav", Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-flow: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: space-around;
+  padding-block: 1em;
+  border-bottom: var(--red-border);
+  background-color: var(--header-background);
+  font-family: "Courier New", Courier, monospace;
+  color: var(--tomato-red);
+}
+
+@media (min-width: 30rem) {
+  header {
+    flex-flow: unset;
+    gap: unset;
+  }
+}
+
+header nav a {
+  --padding: 0.5em;
+  position: relative;
+  padding: var(--padding);
+  font-size: 1.6rem;
+}
+
+header nav a:hover {
+  color: var(--link-hover);
+}
+
+header nav a::after {
+  --scaleX: 0;
+  content: "";
+  position: absolute;
+  inset-inline: var(--padding);
+  bottom: calc(var(--padding) * 0.6);
+  height: 3px;
+  background-color: var(--link-hover);
+  transform: scaleX(var(--scaleX));
+  transition: inherit;
+}
+
+header nav a:hover::after {
+  --scaleX: 1;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+}
+
+main section {
+  padding-block: 1.5em;
+  border-bottom: var(--red-border);
+}
+
+main section.hero {
+  display: grid;
+  place-items: center;
+  padding: 3em 0.25em;
+  background-image: url("imgs/tiger.png");
+  background-position: center;
+  background-size: cover;
+  font-size: 3.25rem;
+}
+
+main section.hero p {
+  padding: 0.25em;
+  border-radius: 0.2em;
+  background-color: #0d0d0d80;
+  text-align: center;
+}
+
+main section > div {
+  display: flex;
+  flex-flow: column;
+  gap: 1em;
+  width: min(80vw, 50em);
+  margin-inline: auto;
+}
+
+main section h2 {
+  width: fit-content;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  border: 2px solid currentColor;
+  border-radius: 0.25em;
+  color: var(--tomato-red);
+}
+
+main section#about-me li:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+main section#about-me h3 {
+  margin-bottom: 0.20em;
+}
+
+a.top {
+  align-self: center;
+  padding: 0.6em 1em;
+  border-radius: 0.75em;
+  margin-block: 1em;
+  --blur: 0.4em;
+  --spread: 0.1em;
+  --alpha: 0.5;
+  box-shadow: 0 0 var(--blur) var(--spread) hsl(0, 0%, 0%, var(--alpha));
+  background-color: var(--tomato-red);
+
+  font-size: 1.5rem;
+}
+
+a.top:hover {
+  --blur: 0.5em;
+  --spread: 0.2em;
+  --alpha: 0.75;
+  transform: scale(1.06);
+}
+
